@@ -7,7 +7,9 @@ class BeverageController {
   }  
 
   def getCategories(){
-    return ["Curativos","Energizantes","Saludables","Estimulantes"]
+    render(contentType:"application/json") {
+        Category.list()
+    }
   }
 
 }

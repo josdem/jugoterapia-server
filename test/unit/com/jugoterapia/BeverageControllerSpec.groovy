@@ -22,7 +22,7 @@ class BeverageControllerSpec extends Specification {
     def result = controller.getCategories()
 
     then:
-    result == ["Curativos","Energizantes","Saludables","Estimulantes"]
+    result == {"name":"Curativos","id":1},{"name":"Energizantes","id":2},{"name":"Saludables","id":3},{"name":"Estimulantes","id":4}
   }
 
 }
