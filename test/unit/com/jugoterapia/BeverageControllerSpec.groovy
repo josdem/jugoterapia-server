@@ -9,12 +9,12 @@ import spock.lang.Specification
 @TestFor(BeverageController)
 class BeverageControllerSpec extends Specification {
 
-    def setup() {
-    }
+  void "should render index"() {
+    when:
+    controller.index()
 
-    def cleanup() {
-    }
+    then:
+    response.text == "ok"
+  }
 
-    void "test something"() {
-    }
 }
