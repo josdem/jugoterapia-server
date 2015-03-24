@@ -18,7 +18,7 @@ environments {
     development {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:mysql://localhost/jmetadata"
+            url = "jdbc:mysql://localhost/jugoterapia"
         }
     }
     test {
@@ -30,7 +30,7 @@ environments {
     production {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:mysql://localhost/jmetadata"
+            url = "jdbc:mysql://localhost/jugoterapia"
             properties {
                // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation
                jmxEnabled = true
