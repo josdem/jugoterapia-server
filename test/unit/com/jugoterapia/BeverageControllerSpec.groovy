@@ -19,10 +19,10 @@ class BeverageControllerSpec extends Specification {
 
   void "should get categories"() {
     when:
-    controller.getCategories()
+    def result = controller.getCategories()
 
     then:
-    response.text == "categories"
+    result == ["Curativos","Energizantes","Saludables","Estimulantes"]
   }
 
 }
