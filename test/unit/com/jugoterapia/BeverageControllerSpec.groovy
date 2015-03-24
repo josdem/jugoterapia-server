@@ -17,4 +17,12 @@ class BeverageControllerSpec extends Specification {
     response.text == "ok"
   }
 
+  void "should get categories"() {
+    when:
+    controller.getCategories()
+
+    then:
+    response.text == "categories"
+  }
+
 }
