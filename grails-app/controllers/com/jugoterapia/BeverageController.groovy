@@ -6,4 +6,8 @@ class BeverageController {
     render "ok"
   }  
 
+  def getCategories(){
+    render "categories"
+  }
+
 }
