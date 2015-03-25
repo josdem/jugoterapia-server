@@ -7,14 +7,14 @@ import spock.lang.Specification
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
 @TestFor(BeverageService)
+@Mock(Category)
 class BeverageServiceSpec extends Specification {
 
-    def setup() {
-    }
+  void "should list categories"() {
+    when:
+    service.getCategories()
+    then:
+    Category.list() >> true
+  }
 
-    def cleanup() {
-    }
-
-    void "test something"() {
-    }
 }
