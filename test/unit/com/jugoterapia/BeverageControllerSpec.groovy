@@ -7,11 +7,12 @@ import spock.lang.Specification
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
 @TestFor(BeverageController)
-@Mock(Category)
 class BeverageControllerSpec extends Specification {
   
-  void setupSpec() {
-    mockDomain(Category)
+  BeverageService beverageService = Mock(BeverageService)
+
+  def setup() {
+     controller.beverageService = beverageService
   }
 
   void "should render index"() {
@@ -27,7 +28,7 @@ class BeverageControllerSpec extends Specification {
     def result = controller.getCategories()
 
     then:
-    result == "name"
+    1 * beverageService.getCategories()
   }
 
 }

@@ -2,12 +2,14 @@ package com.jugoterapia
 
 class BeverageController {
 
+  BeverageService beverageService
+
   def index(){
     render "ok"
   }  
 
   def getCategories(){
-    def categories =  Category.list()
+    def categories =  beverageService.getCategories()
   
     def json = []
 
