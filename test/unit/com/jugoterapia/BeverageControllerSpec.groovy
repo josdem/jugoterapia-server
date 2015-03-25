@@ -10,9 +10,15 @@ import spock.lang.Specification
 class BeverageControllerSpec extends Specification {
   
   BeverageService beverageService = Mock(BeverageService)
+  def categories = []
 
   def setup() {
-     controller.beverageService = beverageService
+    controller.beverageService = beverageService
+    def item = new Categoria()
+    item.id = 1
+    item.name = "Curativos"
+    item.clazz = "com.jugoterapia.Category"
+    categories << item
   }
 
   void "should render index"() {
@@ -25,10 +31,17 @@ class BeverageControllerSpec extends Specification {
 
   void "should get categories"() {
     when:
-    def result = controller.getCategories()
+    controller.getCategories()
 
     then:
-    1 * beverageService.getCategories()
+    1 * beverageService.getCategories() >> categories
+    response.text == "[{\"id\":1,\"name\":\"Curativos\"}]"
   }
 
+}
+
+class Categoria {
+  Integer id
+  String name
+  String clazz
 }
