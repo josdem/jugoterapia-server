@@ -1,7 +1,10 @@
+import grails.converters.JSON
+
 class BootStrap {
 
-    def init = { servletContext ->
-    }
-    def destroy = {
-    }
+  def init = { servletContext ->
+  }
+  def destroy = {
+  }
+
 }
