@@ -35,7 +35,7 @@ class BeverageControllerSpec extends Specification {
 
     then:
     1 * beverageService.getCategories() >> categories
-    response.text == "[{\"id\":1,\"name\":\"Curativos\"}]"
+    response.text == "{\"categories\":[{\"id\":1,\"name\":\"Curativos\"}]}"
   }
 
 }
