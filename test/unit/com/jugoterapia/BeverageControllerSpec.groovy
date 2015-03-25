@@ -14,7 +14,7 @@ class BeverageControllerSpec extends Specification {
 
   def setup() {
     controller.beverageService = beverageService
-    def item = new Categoria()
+    def item = new GrailsCategory()
     item.id = 1
     item.name = "Curativos"
     item.clazz = "com.jugoterapia.Category"
@@ -40,7 +40,7 @@ class BeverageControllerSpec extends Specification {
 
 }
 
-class Categoria {
+class GrailsCategory {
   Integer id
   String name
   String clazz
