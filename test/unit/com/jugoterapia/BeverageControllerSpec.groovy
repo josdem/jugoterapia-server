@@ -23,8 +23,9 @@ class BeverageControllerSpec extends Specification {
 
     def drink  = new GrailsBeverage()
     drink.name = "Jugo para evitar los calambres"
-    drink.ingredients = "3 Tallos de apio,¼ De pepino"
-    drink.recipe = "Mezcla 3 tallos de apio y ¼ de pepino y procesalos en el extractor de jugos. Si lo deseas, puedes rebajarlo con agua."
+    drink.ingredients = "3 Tallos de apio"
+    drink.recipe = "Mezcla 3 tallos de apio procesalos en el extractor de jugos."
+    drink.category = item
     beverages << drink
   }
 
@@ -54,6 +55,7 @@ class BeverageControllerSpec extends Specification {
 
     then:
     1 * beverageService.getBeverages(categoryId) >> beverages
+    response.text == "{\"beverages\":[{\"ingredients\":\"3 Tallos de apio\",\"recipe\":\"Mezcla 3 tallos de apio procesalos en el extractor de jugos.\",\"name\":\"Jugo para evitar los calambres\"}]}"
   }
 
 }
@@ -68,4 +70,5 @@ class GrailsBeverage {
   String name
   String ingredients
   String recipe
+  GrailsCategory category
 }

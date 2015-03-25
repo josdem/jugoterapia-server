@@ -10,5 +10,7 @@ class BeverageService {
   }
 
   def getBeverages(Integer categoryId){
+    def category = Category.get(categoryId)
+    Beverage.findByCategory(category)
   }
 }

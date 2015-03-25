@@ -26,7 +26,19 @@ class BeverageController {
   }
 
   def beverages(Integer categoryId){
-    beverageService.getBeverages(categoryId) 
+    def beverages = beverageService.getBeverages(categoryId) 
+    
+    def map = []
+    
+    beverages.each{
+      def drink = new Drink()
+      drink.name = it.name
+      drink.ingredients = it.ingredients
+      drink.recipe = it.recipe
+      map << drink
+    }
+
+    render "{\"beverages\":" +  new JsonBuilder( map ) +"}"
   }
 
 }
@@ -34,5 +46,11 @@ class BeverageController {
 class Item {
   Integer id
   String name
+}
+
+class Drink {
+  String name
+  String ingredients
+  String recipe
 }
 
