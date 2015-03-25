@@ -13,4 +13,9 @@ class BeverageService {
     def category = Category.get(categoryId)
     Beverage.findByCategory(category)
   }
+
+  def getBeverage(Integer beverageId){
+    Beverage.get(beverageId)
+  }
+
 }

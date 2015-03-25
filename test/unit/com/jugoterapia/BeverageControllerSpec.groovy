@@ -58,6 +58,17 @@ class BeverageControllerSpec extends Specification {
     response.text == "{\"beverages\":[{\"ingredients\":\"3 Tallos de apio\",\"recipe\":\"Mezcla 3 tallos de apio procesalos en el extractor de jugos.\",\"name\":\"Jugo para evitar los calambres\"}]}"
   }
 
+  void "should get beverage by id"(){
+    given:
+    def beverageId = 1
+    
+    when:
+    controller.beverage(beverageId)
+
+    then:
+    1 * beverageService.getBeverage(beverageId)
+  }
+
 }
 
 class GrailsCategory {
