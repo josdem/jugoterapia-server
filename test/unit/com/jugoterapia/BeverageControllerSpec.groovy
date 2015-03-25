@@ -31,7 +31,7 @@ class BeverageControllerSpec extends Specification {
 
   void "should get categories"() {
     when:
-    controller.getCategories()
+    controller.categories()
 
     then:
     1 * beverageService.getCategories() >> categories

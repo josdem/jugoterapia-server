@@ -1,6 +1,6 @@
 package com.jugoterapia
 
-import groovy.json.*
+import groovy.json.JsonBuilder
 
 class BeverageController {
 
@@ -10,7 +10,7 @@ class BeverageController {
     render "ok"
   }  
 
-  def getCategories(){
+  def categories(){
     def categories =  beverageService.getCategories()
   
     def map = []
