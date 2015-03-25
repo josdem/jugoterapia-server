@@ -25,6 +25,10 @@ class BeverageController {
     render "{\"categories\":" +  new JsonBuilder( map ) +"}"
   }
 
+  def beverages(Integer categoryId){
+    beverageService.getBeverages(categoryId) 
+  }
+
 }
 
 class Item {

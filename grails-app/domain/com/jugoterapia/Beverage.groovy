@@ -15,4 +15,7 @@ class Beverage {
   static mapping = {
     version false
   }
+
+  static belongsTo = [category : Category]
+
 }
