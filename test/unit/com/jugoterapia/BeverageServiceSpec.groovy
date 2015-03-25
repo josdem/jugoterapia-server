@@ -31,4 +31,15 @@ class BeverageServiceSpec extends Specification {
     Beverage.findByCategory(mockCategory) >> true   
   }
 
+  void "should get beverage"(){
+    given:
+    def beverageId = 1
+  
+    when:
+    service.getBeverage(beverageId)
+    
+    then:
+    Beverage.get(beverageId) >> true
+  }
+
 }
