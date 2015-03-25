@@ -42,7 +42,17 @@ class BeverageController {
   }
 
   def beverage(Integer beverageId){
-    beverageService.getBeverage(beverageId) 
+    def beverage = beverageService.getBeverage(beverageId) 
+
+    def drink = new Drink()
+    drink.name = beverage.name
+    drink.ingredients = beverage.ingredients
+    drink.recipe = beverage.recipe
+  
+    render(contentType:"application/json") {
+      drink
+    }
+ 
   }
 
 }

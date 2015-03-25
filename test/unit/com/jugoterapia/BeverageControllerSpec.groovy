@@ -13,15 +13,16 @@ class BeverageControllerSpec extends Specification {
   def categories = []
   def beverages = []
 
+  def item = new GrailsCategory()
+  def drink  = new GrailsBeverage()
+
   def setup() {
     controller.beverageService = beverageService
-    def item = new GrailsCategory()
     item.id = 1
     item.name = "Curativos"
     item.clazz = "com.jugoterapia.Category"
     categories << item
 
-    def drink  = new GrailsBeverage()
     drink.name = "Jugo para evitar los calambres"
     drink.ingredients = "3 Tallos de apio"
     drink.recipe = "Mezcla 3 tallos de apio procesalos en el extractor de jugos."
@@ -66,7 +67,8 @@ class BeverageControllerSpec extends Specification {
     controller.beverage(beverageId)
 
     then:
-    1 * beverageService.getBeverage(beverageId)
+    1 * beverageService.getBeverage(beverageId) >> drink
+    response.text == "{\"ingredients\":\"3 Tallos de apio\",\"name\":\"Jugo para evitar los calambres\",\"recipe\":\"Mezcla 3 tallos de apio procesalos en el extractor de jugos.\"}"
   }
 
 }
