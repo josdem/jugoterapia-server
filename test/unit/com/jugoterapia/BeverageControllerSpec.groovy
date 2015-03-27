@@ -23,6 +23,7 @@ class BeverageControllerSpec extends Specification {
     item.clazz = "com.jugoterapia.Category"
     categories << item
 
+    drink.id = 1
     drink.name = "Jugo para evitar los calambres"
     drink.ingredients = "3 Tallos de apio"
     drink.recipe = "Mezcla 3 tallos de apio procesalos en el extractor de jugos."
@@ -56,7 +57,7 @@ class BeverageControllerSpec extends Specification {
 
     then:
     1 * beverageService.getBeverages(categoryId) >> beverages
-    response.text == "{\"beverages\":[{\"ingredients\":\"3 Tallos de apio\",\"recipe\":\"Mezcla 3 tallos de apio procesalos en el extractor de jugos.\",\"name\":\"Jugo para evitar los calambres\"}]}"
+    response.text == "{\"beverages\":[{\"ingredients\":\"3 Tallos de apio\",\"id\":1,\"recipe\":\"Mezcla 3 tallos de apio procesalos en el extractor de jugos.\",\"name\":\"Jugo para evitar los calambres\"}]}"
   }
 
   void "should get beverage by id"(){
@@ -68,7 +69,7 @@ class BeverageControllerSpec extends Specification {
 
     then:
     1 * beverageService.getBeverage(beverageId) >> drink
-    response.text == "{\"ingredients\":\"3 Tallos de apio\",\"name\":\"Jugo para evitar los calambres\",\"recipe\":\"Mezcla 3 tallos de apio procesalos en el extractor de jugos.\"}"
+    response.text == "{\"id\":1,\"ingredients\":\"3 Tallos de apio\",\"name\":\"Jugo para evitar los calambres\",\"recipe\":\"Mezcla 3 tallos de apio procesalos en el extractor de jugos.\"}"
   }
 
 }
@@ -80,6 +81,7 @@ class GrailsCategory {
 }
 
 class GrailsBeverage {
+  Integer id
   String name
   String ingredients
   String recipe

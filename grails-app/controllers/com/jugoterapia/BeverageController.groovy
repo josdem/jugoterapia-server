@@ -32,6 +32,7 @@ class BeverageController {
     
     beverages.each{
       def drink = new Drink()
+      drink.id = it.id
       drink.name = it.name
       drink.ingredients = it.ingredients
       drink.recipe = it.recipe
@@ -45,6 +46,7 @@ class BeverageController {
     def beverage = beverageService.getBeverage(beverageId) 
 
     def drink = new Drink()
+    drink.id = beverage.id
     drink.name = beverage.name
     drink.ingredients = beverage.ingredients
     drink.recipe = beverage.recipe
@@ -63,6 +65,7 @@ class Item {
 }
 
 class Drink {
+  Integer id
   String name
   String ingredients
   String recipe
