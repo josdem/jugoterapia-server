@@ -1,60 +1,64 @@
 package com.jugoterapia
 
-import groovy.json.JsonBuilder
-
 class BeverageController {
 
   BeverageService beverageService
 
   def index(){
     render "ok"
-  }  
+  }
 
   def categories(){
     def categories =  beverageService.getCategories()
-  
-    def map = []
+
+    def list = []
 
     categories.each{
       def item = new Item()
       item.id = it.id
       item.name = it.name
-      map << item
+      list << item
     }
 
-    render "{\"categories\":" +  new JsonBuilder( map ) +"}"
+    render(contentType:"application/json") {
+      list
+    }
+
   }
 
   def beverages(Integer categoryId){
-    def beverages = beverageService.getBeverages(categoryId) 
-    
-    def map = []
-    
+    def beverages = beverageService.getBeverages(categoryId)
+
+    def list = []
+
     beverages.each{
       def drink = new Drink()
       drink.id = it.id
       drink.name = it.name
       drink.ingredients = it.ingredients
       drink.recipe = it.recipe
-      map << drink
+      list << drink
     }
 
-    render "{\"beverages\":" +  new JsonBuilder( map ) +"}"
+    render(contentType:"application/json") {
+      list
+    }
+
   }
 
   def beverage(Integer beverageId){
-    def beverage = beverageService.getBeverage(beverageId) 
+    def beverage = beverageService.getBeverage(beverageId)
 
     def drink = new Drink()
     drink.id = beverage.id
     drink.name = beverage.name
     drink.ingredients = beverage.ingredients
     drink.recipe = beverage.recipe
-  
+
     render(contentType:"application/json") {
       drink
     }
- 
+
   }
 
 }
